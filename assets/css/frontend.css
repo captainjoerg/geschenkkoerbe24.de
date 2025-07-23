@@ -1,0 +1,424 @@
+/* WooCommerce Product Layout Builder - Frontend Styles */
+
+/* ===========================
+   GRID SYSTEM & ALIGNMENT
+   =========================== */
+
+/* Main Grid Layout with proper alignment */
+.wc-plb-product-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--desktop-cols), 1fr);
+    gap: 20px;
+    margin: 20px 0;
+    align-items: stretch; /* Ensures all items in a row have the same height */
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+    .wc-plb-product-grid {
+        grid-template-columns: repeat(var(--tablet-cols), 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .wc-plb-product-grid {
+        grid-template-columns: repeat(var(--mobile-cols), 1fr);
+    }
+}
+
+/* ===========================
+   PRODUCT CARD STRUCTURE
+   =========================== */
+
+/* Product container - Full height with flex layout */
+.wc-plb-product {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.wc-plb-product:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Content wrapper - grows to fill available space */
+.wc-plb-product-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    position: relative;
+}
+
+/* Footer area - stays at bottom */
+.wc-plb-product-footer {
+    margin-top: auto;
+    padding: 0 15px 15px;
+}
+
+/* ===========================
+   ELEMENT POSITIONING & SPACING
+   =========================== */
+
+/* Image container with consistent height */
+.wc-plb-product-image {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.wc-plb-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.wc-plb-product:hover .wc-plb-product-image img {
+    transform: scale(1.05);
+}
+
+/* Sale Badge - Positioned absolutely on image */
+.wc-plb-product-sale-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Title with consistent height baseline */
+.wc-plb-product-title {
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+    min-height: 2.8em; /* Ensures space for 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Price with consistent baseline */
+.wc-plb-product-price {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    min-height: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+/* Rating container with consistent height */
+.wc-plb-product-rating-container {
+    margin: 0 0 10px 0;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.wc-plb-product-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wc-plb-product-rating .star-rating {
+    float: none !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.wc-plb-product-rating-count {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* Stock status with consistent height */
+.wc-plb-product-stock-status {
+    margin: 0 0 10px 0;
+    min-height: 1.2em;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+/* Attributes with consistent baseline */
+.wc-plb-product-attributes {
+    margin: 0 0 15px 0;
+    min-height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.wc-plb-attribute-label {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    border: 1px solid;
+}
+
+.wc-plb-attribute-text {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+/* Description with controlled height */
+.wc-plb-product-description {
+    flex: 1;
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.wc-plb-product-description p {
+    margin: 0 0 8px 0;
+}
+
+.wc-plb-product-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* More info and buttons - pushed to bottom */
+.wc-plb-more-info-button,
+.wc-plb-more-info-text {
+    margin: auto 0 15px 0;
+    text-align: center;
+}
+
+.wc-plb-product-add-to-cart {
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.wc-plb-product-add-to-cart .button {
+    width: 100%;
+    padding: 10px 8px;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-sizing: border-box;
+    line-height: 1.2;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wc-plb-product-add-to-cart .button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================
+   PLACEHOLDER ELEMENTS
+   =========================== */
+
+/* Invisible placeholders to maintain layout consistency */
+.wc-plb-product-sale-badge-placeholder,
+.wc-plb-product-title-placeholder,
+.wc-plb-product-price-placeholder,
+.wc-plb-product-rating-placeholder,
+.wc-plb-product-stock-status-placeholder,
+.wc-plb-product-attributes-placeholder,
+.wc-plb-product-description-placeholder,
+.wc-plb-product-add-to-cart-placeholder,
+.wc-plb-more-info-button-placeholder {
+    visibility: hidden;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+}
+
+/* ===========================
+   RESPONSIVE ADJUSTMENTS
+   =========================== */
+
+/* Adjustments for 6-column layout */
+@media (min-width: 1200px) {
+    .wc-plb-product-grid[style*="--desktop-cols: 6"] .wc-plb-product-title {
+        font-size: 14px;
+        min-height: 3.2em; /* More space for longer titles */
+    }
+    
+    .wc-plb-product-grid[style*="--desktop-cols: 6"] .wc-plb-product-add-to-cart .button {
+        font-size: 12px;
+        padding: 8px 4px;
+    }
+    
+    .wc-plb-product-grid[style*="--desktop-cols: 6"] .wc-plb-product-image {
+        height: 160px; /* Smaller image for 6 columns */
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .wc-plb-product-grid {
+        gap: 15px;
+    }
+    
+    .wc-plb-product-content {
+        padding: 12px;
+    }
+    
+    .wc-plb-product-image {
+        height: 180px;
+        margin-bottom: 12px;
+    }
+    
+    .wc-plb-product-title {
+        font-size: 16px;
+        min-height: 2.4em;
+    }
+}
+
+/* ===========================
+   FILTERS & PAGINATION
+   =========================== */
+
+.wc-plb-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.wc-plb-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.wc-plb-filter label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.wc-plb-filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #fff;
+    min-width: 150px;
+}
+
+.wc-plb-pagination {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.wc-plb-pagination ul.page-numbers {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wc-plb-pagination ul.page-numbers li {
+    margin: 0;
+}
+
+.wc-plb-pagination ul.page-numbers li a,
+.wc-plb-pagination ul.page-numbers li span {
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: all 0.3s ease;
+    display: inline-block;
+    min-width: 40px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.wc-plb-pagination ul.page-numbers li a:hover,
+.wc-plb-pagination ul.page-numbers li span.current {
+    background-color: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+    transform: translateY(-1px);
+}
+
+.wc-plb-pagination ul.page-numbers li span.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f9f9f9 !important;
+    color: #999 !important;
+    border-color: #ddd !important;
+    transform: none !important;
+}
+
+/* ===========================
+   LOADING STATES
+   =========================== */
+
+.wc-plb-product-grid.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.wc-plb-no-products {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-style: italic;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+
+.wc-plb-text-center {
+    text-align: center;
+}
+
+.wc-plb-text-left {
+    text-align: left;
+}
+
+.wc-plb-text-right {
+    text-align: right;
+}
+
+.wc-plb-clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
